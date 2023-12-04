@@ -1,5 +1,6 @@
 package com.example.casemd4mxh.model;
 
+import com.example.casemd4mxh.model.account.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -24,6 +25,8 @@ public class Image {
     private String location;
     @ManyToOne
     private Category category;
+    @ManyToOne
+    private User user;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "image_album",
