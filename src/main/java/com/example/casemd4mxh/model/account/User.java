@@ -1,11 +1,9 @@
-package com.example.casemd4mxh.model;
+package com.example.casemd4mxh.model.account;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import org.intellij.lang.annotations.Pattern;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -25,11 +23,13 @@ public class User implements Serializable {
 
     @Column(nullable = false)
     private String confirmPassword;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @Email(message = "Email không hợp lệ")
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String dateOfBirth;
+    @Column(nullable = true)
+    private String imageUser;
     private boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -38,12 +38,14 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;
 
-    public User(String username, String password, String confirmPassword, String email, String dateOfBirth, Set<Role> roles) {
+    public User(String username, String password, String confirmPassword, String email, String dateOfBirth, String imageUser, boolean enabled, Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+        this.imageUser = imageUser;
+        this.enabled = enabled;
         this.roles = roles;
     }
 
@@ -108,6 +110,14 @@ public class User implements Serializable {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getImageUser() {
+        return imageUser;
+    }
+
+    public void setImageUser(String imageUser) {
+        this.imageUser = imageUser;
     }
 
     public boolean isEnabled() {

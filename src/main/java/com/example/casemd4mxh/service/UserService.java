@@ -1,6 +1,6 @@
 package com.example.casemd4mxh.service;
 
-import com.example.casemd4mxh.model.User;
+import com.example.casemd4mxh.model.account.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
