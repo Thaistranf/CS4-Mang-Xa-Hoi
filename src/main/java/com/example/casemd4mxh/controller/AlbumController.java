@@ -23,7 +23,7 @@ public class AlbumController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<List<Album>> findAll(@PathVariable Long id){
-        List<Album> albums = (List<Album>) albumService.findByAllUserId(id);
+        List<Album> albums = (List<Album>) albumService.findAllByUserId(id);
         if (albums.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

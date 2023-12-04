@@ -38,7 +38,9 @@ public class AlbumServiceImpl implements AlbumService <Album> {
     }
 
     @Override
-    public List<Album> findByAllUserId(Long id) {
-        return albumRepository.findByAllUserId(id);
+    public Iterable<Album> findAllByUserId(Long id) {
+        return albumRepository.findAllByUserId(id);
     }
+
+
 }

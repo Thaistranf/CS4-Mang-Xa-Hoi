@@ -11,5 +11,5 @@ public interface AlbumService <E>{
     E save(E e);
     void delete(Long id);
 
-    List<E> findByAllUserId(Long id);
+    Iterable<E> findAllByUserId(Long id);
 }
