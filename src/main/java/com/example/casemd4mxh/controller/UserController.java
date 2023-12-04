@@ -1,8 +1,8 @@
 package com.example.casemd4mxh.controller;
 
-import com.example.casemd4mxh.model.JwtResponse;
-import com.example.casemd4mxh.model.Role;
-import com.example.casemd4mxh.model.User;
+import com.example.casemd4mxh.model.account.JwtResponse;
+import com.example.casemd4mxh.model.account.Role;
+import com.example.casemd4mxh.model.account.User;
 import com.example.casemd4mxh.service.RoleService;
 import com.example.casemd4mxh.service.UserService;
 import com.example.casemd4mxh.service.impl.JwtService;

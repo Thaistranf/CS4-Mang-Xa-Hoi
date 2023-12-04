@@ -1,4 +1,4 @@
-package com.example.casemd4mxh.model;
+package com.example.casemd4mxh.model.account;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
