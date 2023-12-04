@@ -24,4 +24,6 @@ public interface UserService extends UserDetailsService {
     boolean isRegister(User user);
 
     boolean isCorrectConfirmPassword(User user);
+
+    Iterable<User> searchUserByName(String name);
 }
