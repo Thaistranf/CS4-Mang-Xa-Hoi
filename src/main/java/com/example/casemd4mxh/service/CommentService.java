@@ -11,4 +11,6 @@ public interface CommentService {
     void save(Comment comment);
     void deleteById(Long id);
 
+//    void deleteByUserId(Long id);
+
 }
