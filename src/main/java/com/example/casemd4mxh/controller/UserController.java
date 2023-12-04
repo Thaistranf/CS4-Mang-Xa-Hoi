@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -120,5 +121,15 @@ public class UserController {
 
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<User>> searchUser(@RequestParam String name) {
+        List<User> userList= (List<User>) userService.searchUserByName(name);
+        if (userList==null){
+            List<User> users = (List<User>) userService.findAll();
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(userList,HttpStatus.OK);
+        }
     }
 }
