@@ -1,7 +1,7 @@
 package com.example.casemd4mxh.service.impl;
 
-import com.example.casemd4mxh.model.User;
-import com.example.casemd4mxh.model.UserPrinciple;
+import com.example.casemd4mxh.model.account.User;
+import com.example.casemd4mxh.model.account.UserPrinciple;
 import com.example.casemd4mxh.repository.UserRepository;
 import com.example.casemd4mxh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

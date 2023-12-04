@@ -1,4 +1,4 @@
-package com.example.casemd4mxh.model;
+package com.example.casemd4mxh.model.account;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

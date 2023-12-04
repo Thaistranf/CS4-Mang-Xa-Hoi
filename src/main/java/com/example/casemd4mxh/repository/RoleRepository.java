@@ -1,7 +1,7 @@
 package com.example.casemd4mxh.repository;
 
 
-import com.example.casemd4mxh.model.Role;
+import com.example.casemd4mxh.model.account.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.example.casemd4mxh.service.impl;
 
-import com.example.casemd4mxh.model.Role;
+import com.example.casemd4mxh.model.account.Role;
 import com.example.casemd4mxh.repository.RoleRepository;
 import com.example.casemd4mxh.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

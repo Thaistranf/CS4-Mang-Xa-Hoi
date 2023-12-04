@@ -1,7 +1,7 @@
 package com.example.casemd4mxh.service;
 
 
-import com.example.casemd4mxh.model.Role;
+import com.example.casemd4mxh.model.account.Role;
 
 
 public interface RoleService {
