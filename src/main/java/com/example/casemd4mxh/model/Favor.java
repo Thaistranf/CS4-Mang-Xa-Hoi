@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Like {
+public class Favor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
