@@ -63,6 +63,6 @@ public class ImageController {
         if (images.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(images, HttpStatus.OK);
+        return new ResponseEntity<>(images, HttpStatus.OK); 
     }
 }
