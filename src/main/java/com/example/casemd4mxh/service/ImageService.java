@@ -1,5 +1,6 @@
 package com.example.casemd4mxh.service;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ImageService<E> {
@@ -10,4 +11,6 @@ public interface ImageService<E> {
     Optional<E> findById(Long id);
 
     void remove(Long id);
+    Iterable<E> findAllByName(String name);
+    Iterable<E> findImageByCategory(List<Long> categoryId);
 }
