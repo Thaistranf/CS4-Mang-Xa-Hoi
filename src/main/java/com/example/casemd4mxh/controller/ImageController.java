@@ -47,4 +47,22 @@ public class ImageController {
         imageService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Image>> search(@RequestParam String name) {
+        List<Image> images = (List<Image>) imageService.findAllByName(name);
+        System.out.println(images);
+        if (images.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(images,HttpStatus.OK);
+    }
+    @PostMapping("/findimagebycategory")
+    public ResponseEntity<List<Image>> findByCategory(@RequestBody List<Long> categoryId) {
+        List<Image> images = (List<Image>) imageService.findImageByCategory(categoryId);
+        if (images.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(images, HttpStatus.OK);
+    }
 }

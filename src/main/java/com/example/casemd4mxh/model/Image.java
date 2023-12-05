@@ -25,8 +25,17 @@ public class Image {
     private String location;
     @Column(nullable = false)
     private String imageLink;
-    @ManyToOne
-    private Category category;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "image_category",
+            joinColumns = {
+                    @JoinColumn(name = "image_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "category_id", referencedColumnName = "id")
+            }
+    )
+    private Set<Category> categories;
     @ManyToOne
     private User user;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -40,4 +49,5 @@ public class Image {
             }
     )
     private Set<Album> albums;
+    private boolean deleteFlag;
 }
