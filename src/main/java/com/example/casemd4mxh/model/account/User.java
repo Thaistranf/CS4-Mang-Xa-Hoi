@@ -26,9 +26,8 @@ public class User implements Serializable {
     @Column(nullable = false, unique = true)
     @Email(message = "Email không hợp lệ")
     private String email;
-    @Column(nullable = true)
+
     private String dateOfBirth;
-    @Column(nullable = true)
     private String imageUser;
     private boolean enabled = true;
 
