@@ -1,8 +1,5 @@
 package com.example.casemd4mxh.service;
 
-import com.example.casemd4mxh.model.Like;
-
-import java.util.List;
 import java.util.Optional;
 
 public interface AlbumService <E>{

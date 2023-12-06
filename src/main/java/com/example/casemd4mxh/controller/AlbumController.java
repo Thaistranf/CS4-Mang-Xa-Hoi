@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/album")
+@CrossOrigin("*")
 public class AlbumController {
     @Autowired
    private UserService userService;
