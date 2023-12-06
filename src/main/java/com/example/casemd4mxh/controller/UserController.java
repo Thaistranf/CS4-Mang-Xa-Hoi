@@ -111,28 +111,31 @@ public class UserController {
 
     @PutMapping("/users/{id}")
     public ResponseEntity<User> updateUserProfile(@PathVariable Long id, @RequestBody User user) {
+        user.setId(id);
         Optional<User> userOptional = this.userService.findById(id);
+        User user1 = userOptional.get();
         if (!userOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        user.setId(userOptional.get().getId());
-        user.setUsername(userOptional.get().getUsername());
-        user.setEnabled(userOptional.get().isEnabled());
-        user.setPassword(userOptional.get().getPassword());
-        user.setRoles(userOptional.get().getRoles());
-        user.setConfirmPassword(userOptional.get().getConfirmPassword());
-
-        userService.save(user);
+        user1.setUsername(user.getUsername());
+        user1.setDateOfBirth(user.getDateOfBirth());
+        user1.setEmail(user.getEmail());
+        user1.setPassword(user1.getPassword());
+        user1.setConfirmPassword(user1.getConfirmPassword());
+        user1.setRoles(user1.getRoles());
+        user1.setImageUser(user1.getImageUser());
+        userService.save(user1);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @GetMapping("/search")
     public ResponseEntity<List<User>> searchUser(@RequestParam String name) {
-        List<User> userList= (List<User>) userService.searchUserByName(name);
-        if (userList==null){
+        List<User> userList = (List<User>) userService.searchUserByName(name);
+        if (userList == null) {
             List<User> users = (List<User>) userService.findAll();
             return new ResponseEntity<>(users, HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(userList,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(userList, HttpStatus.OK);
         }
     }
 }
