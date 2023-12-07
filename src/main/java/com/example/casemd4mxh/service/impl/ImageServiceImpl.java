@@ -75,4 +75,9 @@ public class ImageServiceImpl implements ImageService<Image> {
     public Iterable<Image> findImageByCategory(List<Long> categoryId) {
         return imageRepository.findByCategoriesIdIn(categoryId);
     }
+
+    @Override
+    public Iterable<Image> findImageByAlbum(Long idAlbum) {
+        return imageRepository.findByAlbumsId(idAlbum);
+    }
 }

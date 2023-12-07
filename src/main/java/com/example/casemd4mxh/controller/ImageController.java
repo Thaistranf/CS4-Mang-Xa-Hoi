@@ -1,5 +1,6 @@
 package com.example.casemd4mxh.controller;
 
+import com.example.casemd4mxh.model.Album;
 import com.example.casemd4mxh.model.Image;
 import com.example.casemd4mxh.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +73,15 @@ public class ImageController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(images, HttpStatus.OK); 
+    }
+    @GetMapping("/imagealbum/{id}")
+    public ResponseEntity<List<Image>> findImageByAlbum(@PathVariable Long id){
+        List<Image> images = (List<Image>) imageService.findImageByAlbum(id);
+        if (images.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        else {
+            return new ResponseEntity<>(images,HttpStatus.OK);
+        }
     }
 }
