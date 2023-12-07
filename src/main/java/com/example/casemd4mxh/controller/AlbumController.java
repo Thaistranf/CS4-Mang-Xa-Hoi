@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/album")
@@ -48,5 +49,9 @@ public class AlbumController {
         albumService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    @GetMapping("/findByID/{id}")
+    public ResponseEntity<Album> findById(@PathVariable Long id) {
+        Optional<Album> album = albumService.findById(id);
+        return new ResponseEntity<>(album.get(), HttpStatus.OK);
+    }
 }
