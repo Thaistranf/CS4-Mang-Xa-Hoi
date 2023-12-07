@@ -103,7 +103,7 @@ public class UserController {
         return new ResponseEntity<>("Hello World", HttpStatus.OK);
     }
 
-        @GetMapping("/users/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getProfile(@PathVariable Long id) {
         Optional<User> userOptional = this.userService.findById(id);
         return userOptional.map(user -> new ResponseEntity<>(user, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
