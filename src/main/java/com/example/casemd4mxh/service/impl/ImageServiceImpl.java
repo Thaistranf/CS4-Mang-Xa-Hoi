@@ -27,6 +27,11 @@ public class ImageServiceImpl implements ImageService<Image> {
     }
 
     @Override
+    public Iterable<Image> findAll() {
+        return imageRepository.findAll();
+    }
+
+    @Override
     public Iterable<Image> findAll(Long id) {
         return imageRepository.findAllByDeleteFlagIsFalseAndUserId(id);
     }

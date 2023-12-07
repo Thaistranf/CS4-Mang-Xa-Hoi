@@ -17,6 +17,14 @@ import java.util.List;
 public class ImageController {
     @Autowired
     private ImageService imageService;
+    @GetMapping("")
+    public ResponseEntity<List<Image>> getAll(){
+        List<Image> images = (List<Image>) imageService.findAll();
+        if (images.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(images, HttpStatus.OK);
+    }
 
     @GetMapping("{id}")
     public ResponseEntity<List<Image>> getAll(@PathVariable Long id) {
