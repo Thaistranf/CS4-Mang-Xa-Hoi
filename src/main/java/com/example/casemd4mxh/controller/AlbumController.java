@@ -33,13 +33,15 @@ public class AlbumController {
         }
     }
     @PostMapping("")
-    public Album create(@RequestBody Album album){
-        return albumService.save(album);
+    public ResponseEntity<Album> create(@RequestBody Album album){
+        albumService.save(album);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @PutMapping("/{id}")
-    public Album update(@PathVariable Long id,@RequestBody Album album){
+    public ResponseEntity<Album> update(@PathVariable Long id,@RequestBody Album album){
         album.setId(id);
-        return albumService.save(album);
+         albumService.save(album);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Album> delete(@PathVariable Long id){
