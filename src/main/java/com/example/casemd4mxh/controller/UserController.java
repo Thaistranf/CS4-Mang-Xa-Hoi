@@ -125,6 +125,25 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @PutMapping("/users/avatar/{id}")
+    public ResponseEntity<User> updateUserAvatar(@PathVariable Long id, @RequestBody User user) {
+        user.setId(id);
+        Optional<User> userOptional = this.userService.findById(id);
+        User user1 = userOptional.get();
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        user1.setUsername(user1.getUsername());
+        user1.setDateOfBirth(user1.getDateOfBirth());
+        user1.setEmail(user1.getEmail());
+        user1.setPassword(user1.getPassword());
+        user1.setConfirmPassword(user1.getConfirmPassword());
+        user1.setRoles(user1.getRoles());
+        user1.setImageUser(user.getImageUser());
+        userService.save(user1);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<User>> searchUser(@RequestParam String name) {
         List<User> userList = (List<User>) userService.searchUserByName(name);
