@@ -55,7 +55,7 @@ public class ImageServiceImpl implements ImageService<Image> {
 
     @Override
     public Optional<Image> findById(Long id) {
-        return Optional.empty();
+        return imageRepository.findById(id);
     }
 
     @Override
