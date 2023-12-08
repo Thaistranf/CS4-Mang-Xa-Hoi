@@ -1,8 +1,11 @@
 package com.example.casemd4mxh.controller;
 
 import com.example.casemd4mxh.model.Comment;
+import com.example.casemd4mxh.model.account.User;
 import com.example.casemd4mxh.service.CommentService;
+import com.example.casemd4mxh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +20,8 @@ import java.util.Optional;
 public class CommentController {
     @Autowired
     private CommentService commentService;
-
+    @Autowired
+    private UserService userService;
     @GetMapping("")
     public ResponseEntity<Iterable<Comment>> showAllComment() {
         List<Comment> commentList = (List<Comment>) commentService.findAll();
@@ -36,10 +40,16 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<Comment> addComment(@RequestBody Comment comment){
+    public ResponseEntity<Iterable<Comment>> addComment(@RequestBody Comment comment){
         comment.setTime(LocalDateTime.now());
+        User user = userService.findById(comment.getUser().getId()).get();
+        comment.setUser(user);
         commentService.save(comment);
-        return new ResponseEntity<>(HttpStatus.OK);
+        List<Comment> commentListByImageId = (List<Comment>) commentService.findAllByImageId(comment.getImage().getId());
+        if (commentListByImageId.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(commentListByImageId, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
