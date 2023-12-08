@@ -73,6 +73,16 @@ public class ImageController {
         }
         return new ResponseEntity<>(images, HttpStatus.OK); 
     }
+    @GetMapping("/imagealbum/{id}")
+    public ResponseEntity<List<Image>> findImageByAlbum(@PathVariable Long id){
+        List<Image> images = (List<Image>) imageService.findImageByAlbum(id);
+        if (images.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        else {
+            return new ResponseEntity<>(images,HttpStatus.OK);
+        }
+    }
 
     @GetMapping("/display/{imageId}")
     public ResponseEntity<Image> findImageById(@PathVariable Long imageId){

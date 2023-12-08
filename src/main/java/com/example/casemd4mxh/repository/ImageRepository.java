@@ -14,4 +14,5 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
     Iterable<Image> findAllByNameContaining(String name);
 
     Iterable<Image> findByCategoriesIdIn(List<Long> categoryId);
+    Iterable<Image> findByAlbumsId(Long idAlbum);
 }

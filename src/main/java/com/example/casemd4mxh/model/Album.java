@@ -4,6 +4,8 @@ import com.example.casemd4mxh.model.account.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Entity
 @Data
 public class Album {
@@ -13,4 +15,6 @@ public class Album {
     private String name;
     @ManyToOne
     private User user;
+    @ManyToMany(mappedBy = "albums")
+    private Set<Image> images;
 }

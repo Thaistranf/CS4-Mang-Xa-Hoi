@@ -14,4 +14,5 @@ public interface ImageService<E> {
     void remove(Long id);
     Iterable<E> findAllByName(String name);
     Iterable<E> findImageByCategory(List<Long> categoryId);
+    Iterable<E> findImageByAlbum(Long idAlbum);
 }
